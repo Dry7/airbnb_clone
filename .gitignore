@@ -10,3 +10,4 @@ puphpet/config-custom.yaml
 /.vagrant/
 /html/
 /puphpet/
+/.phpstorm.meta.php
