@@ -1,0 +1,133 @@
+Клон Airbnb.
+
+Технологии:
+Laravel 5.3
+Angular 2
+TDD
+Приложение для Android
+
+БД: PostgreSQL
+Кеширование: Redis
+Поиск: Elasticsearch
+Хранение файлов: AWS
+Платежное API: Stripe
+Сессии: Redis
+
+
+БД:
+
+(users)
+id
+first_name Имя
+last_name Фамилия
+sex Пол
+birthday День рождения
+email Email
+password Пароль
+state Статус
+phone Телефон
+languale Язык
+currency Валюта
+country Страна
+city Где вы живете
+about
+
+university Школа/ВУЗ
+employer Место работы
+time_zone Чесовой пояс
+languages
+
+
+photo
+video
+
+verify
+verify_email
+verify_phone
+verify_passport
+
+facebook
+google
+linkedin
+
+reviews - Количество отзывов
+
+receive_promotional_email
+receive_informative_email
+receive_phone_call
+
+login_notifications_enabled
+
+created_at
+lastvisit_at
+
+
+(ads) Объявления
+id
+title - Название
+room_type - (entire_home, private_room, shared_room)
+person_capacity - (1 - 16)
+country - Страна
+city - Город
+state - Регион
+street - Улица
+address_additionally
+full_address - Адрес
+zipcode - Почтовый адрес
+lat - Широта
+lng - Долгота
+house-type - Тип жилья
+bedrooms - (0-10) Количество спален
+number_of_beds - Количество кроватей
+bed_types - (real_bed, pull_out_sofa, airbed, futon, couch)
+guests - Сколько гостей вы можете принять?
+bathrooms - Количество ванных комнат (учитывать просто туалет, без душа).
+
+
+essentials - Туалетные принадлежности 
+wireless_internet - Wifi
+shampoo - Шампунь
+hangers - Шкаф/комод
+tv - Телевизор
+heating - Отопление
+ac - Кондиционер
+breakfast - Завтрак
+laptop-friendly - Рабочее место
+fireplace - Камин
+iron - Утюг
+hair-dryer - Фен
+allows_pets - Можно с животными
+
+smoke_detector - Детектор дыма
+carbon_monoxide_detector - Детектор угарного газа
+first_aid_kit - Аптечка
+safety_card  Памятка безопасности
+fire_extinguisher - Огнетушитель
+lock_on_bedroom_door - Дверь спальни запирается
+
+kitchen - Кухня
+washer - Белье – стиральная машина
+dryer - Белье – сушильня
+free_parking - Парковка
+elevator - Лифт
+pool - Бассейн
+jacuzzi - Джакузи
+gym - Тренажерный зал
+
+
+deside - text - Рядом с моим жильем
+can_love - text - За что можно полюбить
+
+good_for - Пары, Соло-путешественники, Деловые путешественники, Семьи (с детьми), Большие группы, Мохнатые друзья (животные)
+
+summary - Описание
+
+photos - 
+id
+ad - Объявление
+url - Ссылка на AWS
+Ссылки на копии
+caption - ПОдпись
+sort - Порядок
+main - Главное фото
+
