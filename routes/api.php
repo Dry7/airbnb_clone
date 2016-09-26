@@ -23,4 +23,5 @@ Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $route
     $router->get('/help/categories', '\App\Api\Controllers\HelpController@categories');
     $router->get('/help/suggested', '\App\Api\Controllers\HelpController@suggested');
     $router->get('/help/popular', '\App\Api\Controllers\HelpController@popular');
+    $router->get('/help/{id}', '\App\Api\Controllers\HelpController@show');
 });

@@ -3,6 +3,7 @@
 namespace App\Api\Controllers;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 /**
  * Class HelpController
@@ -150,6 +151,29 @@ class HelpController extends Controller
                 [ 'icon' => 'edit', 'name' => 'Editing your profile', 'url' => '/help/topic/196' ],
                 [ 'icon' => 'credit-card', 'name' => 'Booking a reservation', 'url' => '/help/article/380"' ],
                 [ 'icon' => 'star-alt', 'name' => 'Preapprovals & special offers', 'url' => '/help/topic/200' ]
+            ]
+        );
+    }
+
+    /**
+     * Get question details
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(Request $request, $id)
+    {
+        return response()->json(
+            [
+                'id' => 318,
+                'name' => 'How do taxes work for guests?',
+                'url' => '/help/article/318/how-do-taxes-work-for-guests',
+                'description' => '
+                    <p>There are a few instances where an Airbnb guest may need to pay tax.</p>
+                    <p>Some hosts are required by their local regulations to charge a tax. We recommend they include the tax in the price of the reservation, but some may require the tax to be paid directly upon check-in. We ask that hosts explain any taxes they may be required to collect in their listing description and their communication with guests prior to booking.</p>
+                    <p>In some locations, Airbnb has made agreements with government officials to collect and remit certain local taxes on behalf of hosts. The taxes vary and, depending on the local law, may include calculations based on a flat rate or percentage rate, the number of guests, number of nights, or property type booked. When you book a listing in one of these locations, the local taxes collected will be displayed automatically when you pay and appear on your receipt once your reservation is confirmed.</p>
+                    <p>Additionally, Airbnb is required to collect VAT or a VAT equivalent (i.e. Japanese Consumption Tax) on its service fees in countries that tax Electronically Supplied Services. Currently, that includes all countries in the EU, Switzerland, Norway, Iceland, South Africa, and Japan. <a href="https://www.airbnb.com/help/topic/159">Learn more about Value Added Tax.</a></p>'
             ]
         );
     }
