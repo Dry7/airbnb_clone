@@ -49,7 +49,7 @@ class HelpController extends Controller
                 [ 'name' => 'Getting started', 'subcategories' => [
                     [ 'name' => 'How it works', 'url' => '/help/getting-started/how-it-works' ],
                     [ 'name' => 'How to travel', 'url' => '/help/getting-started/how-to-travel' ],
-                    [ 'name' => 'How to host', 'url' => '/help/getting-started/how-to-host' ]
+                    [ 'name' => 'How to host', 'url' => '/host' ]
                     ]
                 ],
                 [ 'name' => 'Account & profile', 'subcategories' => [
