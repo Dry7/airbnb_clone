@@ -156,6 +156,29 @@ class HelpController extends Controller
     }
 
     /**
+     * Topic
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function topic(Request $request, $id)
+    {
+        return response()->json(
+            [
+                [ 'name' => 'Preparing to travel ' . rand(-10, 10), 'url' => '/help/article/695' ],
+                [ 'name' => 'Changing or canceling a reservation ' . rand(-10, 10), 'url' => '/help/topic/232' ],
+                [ 'name' => 'Reporting a problem ' . rand(-10, 10), 'url' => '/help/topic/260' ],
+                [ 'name' => 'Payments & getting paid ' . rand(-10, 10), 'url' => '/help/article/51' ],
+                [ 'name' => 'Reviews ' . rand(-10, 10), 'url' => '/help/article/13' ],
+                [ 'name' => 'Editing your profile ' . rand(-10, 10), 'url' => '/help/topic/196' ],
+                [ 'name' => 'Booking a reservation ' . rand(-10, 10), 'url' => '/help/article/380"' ],
+                [ 'name' => 'Preapprovals & special offers ' . rand(-10, 10), 'url' => '/help/topic/200' ]
+            ]
+        );
+    }
+
+    /**
      * Get question details
      *
      * @param Request $request

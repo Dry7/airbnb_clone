@@ -71,6 +71,22 @@ class ApiHelperTest extends TestCase
     }
 
     /**
+     * Test /api/v1/help/topic
+     *
+     * @return void
+     */
+    public function testTopic()
+    {
+        $this
+            ->visit('/api/v1/help/topic/1')
+            ->seeJsonStructure([
+                '*' => [
+                    'name', 'url'
+                ]
+            ]);
+    }
+
+    /**
      * Test /api/v1/help/11
      *
      * @return void
