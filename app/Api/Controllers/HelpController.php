@@ -132,4 +132,25 @@ class HelpController extends Controller
             ]
         );
     }
+
+    /**
+     * Popular questions
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function popular()
+    {
+        return response()->json(
+            [
+                [ 'icon' => 'paper-plane', 'name' => 'Preparing to travel', 'url' => '/help/article/695' ],
+                [ 'icon' => 'edit', 'name' => 'Changing or canceling a reservation', 'url' => '/help/topic/232' ],
+                [ 'icon' => 'flag', 'name' => 'Reporting a problem', 'url' => '/help/topic/260' ],
+                [ 'icon' => 'money-deposit', 'name' => 'Payments & getting paid', 'url' => '/help/article/51' ],
+                [ 'icon' => 'comment', 'name' => 'Reviews', 'url' => '/help/article/13' ],
+                [ 'icon' => 'edit', 'name' => 'Editing your profile', 'url' => '/help/topic/196' ],
+                [ 'icon' => 'credit-card', 'name' => 'Booking a reservation', 'url' => '/help/article/380"' ],
+                [ 'icon' => 'star-alt', 'name' => 'Preapprovals & special offers', 'url' => '/help/topic/200' ]
+            ]
+        );
+    }
 }
