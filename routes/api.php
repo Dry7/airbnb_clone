@@ -21,4 +21,5 @@ Route::get('/user', function (Request $request) {
 Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $router) {
     $router->get('/help/search', '\App\Api\Controllers\HelpController@search');
     $router->get('/help/categories', '\App\Api\Controllers\HelpController@categories');
+    $router->get('/help/suggested', '\App\Api\Controllers\HelpController@suggested');
 });

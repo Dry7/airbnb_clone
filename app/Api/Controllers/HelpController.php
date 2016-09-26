@@ -13,7 +13,7 @@ class HelpController extends Controller
     /**
      * Search questions
      *
-     * @return string
+     * @return \Illuminate\Http\JsonResponse
      */
     public function search()
     {
@@ -36,6 +36,11 @@ class HelpController extends Controller
         );
     }
 
+    /**
+     * List of categories
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function categories()
     {
         return response()->json(
@@ -106,6 +111,24 @@ class HelpController extends Controller
                   [ 'name' => 'Nondiscrimination', 'url' => '/help/topic/533/nondiscrimination' ]
                 ] ],
                 [ 'name' => 'Resolve issue', 'url' => '/help/contact_us' ],
+            ]
+        );
+    }
+
+    /**
+     * @brief Suggested questions
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function suggested()
+    {
+        return response()->json(
+            [
+                [ 'name' => 'Can I change a reservation as a host?', 'url' => '/help/article/50/can-i-change-a-reservation-as-a-host' ],
+                [ 'name' => 'How is the price determined for my reservation?', 'url' => '/help/article/125/how-is-the-price-determined-for-my-reservation' ],
+                [ 'name' => 'What is Verified ID?', 'url' => '/help/article/450/what-is-verified-id' ],
+                [ 'name' => 'What is the Airbnb cancellation policy?', 'url' => '/help/article/149/what-is-the-airbnb-cancellation-policy' ],
+                [ 'name' => 'How does Airbnb handle security deposits?', 'url' => '/help/article/140/how-does-airbnb-handle-security-deposits' ]
             ]
         );
     }
