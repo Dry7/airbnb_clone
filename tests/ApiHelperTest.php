@@ -80,9 +80,11 @@ class ApiHelperTest extends TestCase
         $this
             ->visit('/api/v1/help/topic/1')
             ->seeJsonStructure([
-                '*' => [
-                    'name', 'url'
-                ]
+                    'id', 'name', 'url', 'articles' => [
+                        '*' => [
+                            'name', 'url'
+                        ]
+                    ]
             ]);
     }
 
