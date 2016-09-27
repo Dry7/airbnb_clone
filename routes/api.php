@@ -26,4 +26,15 @@ Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $route
     $router->get('/help/topic/{id}', '\App\Api\Controllers\HelpController@topic');
     $router->get('/help/getting-started/{slug}', '\App\Api\Controllers\HelpController@gettingStarted');
     $router->get('/help/{id}', '\App\Api\Controllers\HelpController@show');
+
+    $router->get('/map/places', function(Request $request) {
+        $response = file_get_contents('https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' . $request->input('query', '') . '&types=(cities)&language=ru_RU&key=AIzaSyC-FJQ50jNqF12T3bi2PTUw3u8x9WbWyPg');
+        try {
+            $response = json_decode($response);
+            $response = $response->predictions;
+            return response()->json($response);
+        } catch (Exception $e) {
+            return response()->json([]);
+        }
+    });
 });
