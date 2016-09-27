@@ -89,6 +89,24 @@ class ApiHelperTest extends TestCase
     }
 
     /**
+     * Test /api/v1/help/topic
+     *
+     * @return void
+     */
+    public function testGettingStarted()
+    {
+        $this
+            ->visit('/api/v1/help/getting-started/how-to-travel')
+            ->seeJsonStructure([
+                'name', 'url', 'step', 'items' => [
+                    '*' => [
+                        'name', 'step', 'description'
+                    ]
+                ]
+            ]);
+    }
+
+    /**
      * Test /api/v1/help/11
      *
      * @return void

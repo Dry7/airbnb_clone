@@ -49,7 +49,7 @@ class HelpController extends Controller
                 [ 'name' => 'Getting started', 'subcategories' => [
                     [ 'name' => 'How it works', 'url' => '/help/getting-started/how-it-works' ],
                     [ 'name' => 'How to travel', 'url' => '/help/getting-started/how-to-travel' ],
-                    [ 'name' => 'How to host', 'url' => '/help/getting-started/how-to-host' ]
+                    [ 'name' => 'How to host', 'url' => '/host' ]
                     ]
                 ],
                 [ 'name' => 'Account & profile', 'subcategories' => [
@@ -181,6 +181,58 @@ class HelpController extends Controller
                 ]
             ]
         );
+    }
+
+    /**
+     * Getting started
+     *
+     * @param Request $request
+     * @param $slug
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function gettingStarted(Request $request, $slug)
+    {
+        switch ($slug) {
+            case 'how-it-works':
+                return response()->json(
+                    [
+                        'name' => 'How it Works',
+                        'url' => '/help/getting-started/how-it-works',
+                        'step' => 'getting-started-how-it-works',
+                        'items' => [
+                            [ 'name' => 'A Community Built on Sharing', 'step' => 'step-a-community', 'description' => 'Airbnb began in 2008 when two designers who had space to share hosted three travelers looking for a place to stay. Now, millions of hosts and travelers choose to create a free Airbnb account so they can list their space and book unique accommodations anywhere in the world' ],
+                            [ 'name' => 'Trusted Services', 'step' => 'step-secure-services', 'description' => 'Airbnb helps make sharing easy, enjoyable, and safe. We verify personal profiles and listings, maintain a smart messaging system so hosts and guests can communicate with certainty, and manage a trusted platform to collect and transfer payments.' ],
+                            [ 'name' => '24/7 Customer Support', 'step' => 'step-customer-support', 'description' => 'Whether you’re traveling or hosting, we’re here for you before, during, and after your experience. We\'ve answered the most common questions about Airbnb in our Help Center, and for everything else you can contact us by visiting airbnb.com/contact.' ],
+                        ]
+                    ]
+                );
+                break;
+
+            case 'how-to-travel':
+                return response()->json(
+                    [
+                        'name' => 'How to Travel',
+                        'url' => '/help/getting-started/how-to-travel',
+                        'step' => 'getting-started-how-to-travel',
+                        'items' => [
+                            [ 'name' => 'Search', 'step' => 'step-search', 'description' => 'Airbnb hosts share their spaces in 190 countries and more than 34,000 cities. All you have to do is enter your destination and travel dates into the search bar to discover distinctive places to stay, anywhere in the world.' ],
+                            [ 'name' => 'Book', 'step' => 'step-book', 'description' => 'There are a few ways to book spaces on Airbnb. Some hosts want to get to know a guest before they confirm a reservation while others prefer to reduce the time it takes to manage requests by using Airbnb\'s Instant Book feature.' ],
+                            [ 'name' => 'Travel', 'step' => 'step-travel', 'description' => 'Once you know where you’re traveling and whose space you\'ll be staying in, all you have to do is get going!' ],
+                        ]
+                    ]
+                );
+                break;
+
+            default:
+                return response()->json(
+                    [
+                        'name' => '',
+                        'url' => '',
+                        'step' => '',
+                        'items' => []
+                    ]
+                );
+        }
     }
 
     /**
