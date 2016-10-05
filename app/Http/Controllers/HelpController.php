@@ -136,7 +136,7 @@ class HelpController extends Controller
     }
 
     /**
-     * Lise of suggested articles
+     * List of suggested articles
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -148,6 +148,25 @@ class HelpController extends Controller
             ['id' => 13, 'name' => 'How do reviews work?', 'url' => '/help/article/13/how-do-reviews-work'],
             ['id' => 297, 'name' => 'Where can I learn more about Airbnb\'s professional photography service?', 'url' => '/help/article/297/where-can-i-learn-more-about-airbnb-s-professional-photography-service'],
             ['id' => 169, 'name' => 'I’m a guest. How do I cancel my reservation?', 'url' => '/help/article/169/cancel-a-reservation-as-a-guest']
+        ]);
+    }
+
+    /**
+     * List of popular articles and topics
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function popular()
+    {
+        return response()->json([
+            ['id' => 695, 'icon' => 'paper-plane', 'name' => 'Preparing to travel', 'url' => '/help/article/695'],
+            ['id' => 232, 'icon' => 'edit', 'name' => 'Changing or canceling a reservation', 'url' => '/help/topic/232'],
+            ['id' => 260, 'icon' => 'flag', 'name' => 'Reporting a problem', 'url' => '/help/topic/260'],
+            ['id' => 51,  'icon' => 'money-deposit', 'name' => 'Payments & getting paid', 'url' => '/help/article/51'],
+            ['id' => 13,  'icon' => 'comment', 'name' => 'Reviews', 'url' => '/help/article/13'],
+            ['id' => 196, 'icon' => 'edit', 'name' => 'Editing your profile', 'url' => '/help/topic/196'],
+            ['id' => 380, 'icon' => 'credit-card', 'name' => 'Booking a reservation', 'url' => '/help/article/380'],
+            ['id' => 200, 'icon' => 'star-alt', 'name' => 'Preapprovals & special offers', 'url' => '/help/topic/200'],
         ]);
     }
 }

@@ -20,6 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function() {
     Route::group(['prefix' => 'help'], function() {
         Route::get('categories', 'HelpController@categories');
-        Route::get('suggested', 'HelpController@suggested');
+        Route::get('suggested',  'HelpController@suggested');
+        Route::get('popular',    'HelpController@popular');
     });
 });

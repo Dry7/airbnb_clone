@@ -35,4 +35,19 @@ class HelpTest extends TestCase
                 ]
             ]);
     }
+
+    /**
+     * Test /api/v1/help/popular
+     *
+     * @return void
+     */
+    public function testPopular()
+    {
+        $this->visit('/api/v1/help/popular')
+            ->seeJsonStructure([
+                '*' => [
+                    'id', 'icon', 'name', 'url'
+                ]
+            ]);
+    }
 }
