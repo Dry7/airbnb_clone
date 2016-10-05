@@ -134,4 +134,20 @@ class HelpController extends Controller
             ['name' => 'Resolve issue', 'url' => '/help/feedback', 'subcategories' => []],
         ]);
     }
+
+    /**
+     * Lise of suggested articles
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function suggested()
+    {
+        return response()->json([
+            ['id' => 125, 'name' => 'How is the price determined for my reservation?', 'url' => '/help/article/125/how-is-the-price-determined-for-my-reservation'],
+            ['id' => 450, 'name' => 'What is Verified ID?', 'url' => '/help/article/450/what-is-verified-id'],
+            ['id' => 13, 'name' => 'How do reviews work?', 'url' => '/help/article/13/how-do-reviews-work'],
+            ['id' => 297, 'name' => 'Where can I learn more about Airbnb\'s professional photography service?', 'url' => '/help/article/297/where-can-i-learn-more-about-airbnb-s-professional-photography-service'],
+            ['id' => 169, 'name' => 'I’m a guest. How do I cancel my reservation?', 'url' => '/help/article/169/cancel-a-reservation-as-a-guest']
+        ]);
+    }
 }

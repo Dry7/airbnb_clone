@@ -20,4 +20,19 @@ class HelpTest extends TestCase
                  ]
              ]);
     }
+
+    /**
+     * Test /api/v1/help/suggested
+     *
+     * @return void
+     */
+    public function testSuggested()
+    {
+        $this->visit('/api/v1/help/suggested')
+            ->seeJsonStructure([
+                '*' => [
+                    'id', 'name', 'url'
+                ]
+            ]);
+    }
 }
