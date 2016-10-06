@@ -3,6 +3,7 @@
 namespace App\Api\Controllers;
 
 use App\Http\Requests;
+use App\Helpers\StringHelper;
 use Illuminate\Http\Request;
 
 /**
@@ -23,21 +24,11 @@ class MapController extends Controller
         try {
             $places = json_decode($places)->predictions;
             for ($i = 0, $size = sizeof($places); $i < $size; $i++) {
-                $places[$i]->url = $this->getUrl($places[$i]->terms);
+                $places[$i]->url = StringHelper::terms2url($places[$i]->terms);
             }
             return response()->json($places);
         } catch (\Exception $e) {
             return response()->json([]);
         }
-    }
-
-    private function getUrl($terms)
-    {
-        $url = [];
-        foreach ($terms as $term) {
-            $url[] = preg_replace('/ /', '-', $term->value);
-        }
-
-        return implode('--', $url);
     }
 }
