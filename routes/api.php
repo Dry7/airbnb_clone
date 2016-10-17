@@ -19,6 +19,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $router) {
+
     $router->get('/ads/search', '\App\Api\Controllers\AdsController@search');
 
     $router->get('/help/search', '\App\Api\Controllers\HelpController@search');
