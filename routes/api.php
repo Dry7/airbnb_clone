@@ -21,6 +21,10 @@ Route::get('/user', function (Request $request) {
 Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $router) {
 
     $router->get('/ads/search', '\App\Api\Controllers\AdsController@search');
+    $router->get('/ads/amenities', '\App\Api\Controllers\AdsController@amenities');
+    $router->get('/ads/house_types', '\App\Api\Controllers\AdsController@house_types');
+    $router->get('/languages', '\App\Api\Controllers\AdsController@languages');
+    $router->get('/ads/{id}', '\App\Api\Controllers\AdsController@details');
 
     $router->get('/help/search', '\App\Api\Controllers\HelpController@search');
     $router->get('/help/categories', '\App\Api\Controllers\HelpController@categories');

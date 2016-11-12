@@ -343,4 +343,176 @@ class AdsController extends Controller
             ]
         );
     }
+
+    public function details(Request $request, $id)
+    {
+        return response()->json([
+            'id' => $id,
+            'name' => 'Очень красивая и чистая квартира',
+            'house_type' => 'apartment',
+            'type' => 'entire_home',
+            'price' => '2102',
+            'guests' => rand(1, 10),
+            'bedrooms' => rand(1, 10),
+            'bathrooms' => rand(1, 8),
+            'beds' => rand(1, 16),
+            'amenities' => $this->getAmenities(),
+            'languages' => $this->getLanguages(),
+            'reviews' => rand(0, 20),
+            'rating' => $this->getRating(),
+            'is_instant_book' => (bool)rand(0,1),
+            'city' => 'Липецк, Липецкая область, Russia',
+            'about' => 'Центр города.Рядом магазины и кафе.',
+            'accommodates' => rand(1, 10),
+            'author' => $this->authors[rand(0, sizeof($this->authors)-1)],
+            'images' => [
+                $this->images[rand(0, sizeof($this->images)-1)],
+                $this->images[rand(0, sizeof($this->images)-1)],
+                $this->images[rand(0, sizeof($this->images)-1)],
+                $this->images[rand(0, sizeof($this->images)-1)],
+                $this->images[rand(0, sizeof($this->images)-1)]
+            ],
+            'current_image' => 0,
+            'coordinates' => [
+                'lat' => $this->getCoordinate($this->lat),
+                'lng' => $this->getCoordinate($this->lng)
+            ]
+        ]);
+    }
+
+    private function getAmenities()
+    {
+        $amenities = [];
+        foreach ([4, 7, 8, 43, 5, 16, 28, 2, 36, 14, 34, 21, 40, 31, 39, 37, 9, 45, 44, 30, 25, 27, 3, 46, 47, 42, 12, 38, 41, 35, 11, 32, 1, 33, 6] as $amenity) {
+            if (rand(0,1) == 0) {
+                $amenities[] = $amenity;
+            }
+        }
+
+        return $amenities;
+    }
+
+    private function getLanguages()
+    {
+        $languages = [];
+        foreach ([1, 32] as $language) {
+            if (rand(0,1) == 0) {
+                $languages[] = $language;
+            }
+        }
+
+        return $languages;
+    }
+
+    public function amenities()
+    {
+        return response()->json([
+            (object)['id' => 4,  'name' => 'Wireless Internet',         'icon' => 'wifi', 'filter' => true],
+            (object)['id' => 7,  'name' => 'Pool',                      'icon' => 'pool', 'filter' => false],
+            (object)['id' => 8,  'name' => 'Kitchen',                   'icon' => 'meal', 'filter' => true],
+            (object)['id' => 43, 'name' => '24-Hour Check-in',          'icon' => null, 'filter' => true],
+            (object)['id' => 5,  'name' => 'Air Conditioning',          'icon' => 'air-conditioning', 'filter' => true],
+            (object)['id' => 16, 'name' => 'Breakfast',                 'icon' => 'cup', 'filter' => true],
+            (object)['id' => 28, 'name' => 'Buzzer/Wireless Intercom',  'icon' => 'intercom', 'filter' => true],
+            (object)['id' => 2,  'name' => 'Cable TV',                  'icon' => 'desktop', 'filter' => true],
+            (object)['id' => 36, 'name' => 'Carbon Monoxide Detector',  'icon' => null, 'filter' => false],
+            (object)['id' => 14, 'name' => 'Doorman',                   'icon' => 'doorman', 'filter' => true],
+            (object)['id' => 34, 'name' => 'Dryer',                     'icon' => 'dryer', 'filter' => true],
+            (object)['id' => 21, 'name' => 'Elevator in Building',      'icon' => 'elevator', 'filter' => false],
+            (object)['id' => 40, 'name' => 'Essentials',                'icon' => 'essentials', 'filter' => false],
+            (object)['id' => 31, 'name' => 'Family/Kid Friendly',       'icon' => 'family', 'filter' => true],
+            (object)['id' => 39, 'name' => 'Fire Extinguisher',         'icon' => 'fire-alarm', 'filter' => false],
+            (object)['id' => 37, 'name' => 'First Aid Kit',             'icon' => null, 'filter' => false],
+            (object)['id' => 9,  'name' => 'Free Parking on Premises',  'icon' => 'parking', 'filter' => false],
+            (object)['id' => 15, 'name' => 'Gym',                       'icon' => 'gym', 'filter' => false],
+            (object)['id' => 45, 'name' => 'Hair Dryer',                'icon' => 'hair-dryer', 'filter' => true],
+            (object)['id' => 44, 'name' => 'Hangers',                   'icon' => 'hangers', 'filter' => true],
+            (object)['id' => 30, 'name' => 'Heating',                   'icon' => 'heating', 'filter' => true],
+            (object)['id' => 25, 'name' => 'Hot Tub',                   'icon' => 'hot-tub', 'filter' => false],
+            (object)['id' => 27, 'name' => 'Indoor Fireplace',          'icon' => 'fireplace', 'filter' => true],
+            (object)['id' => 3,  'name' => 'Internet',                  'icon' => 'internet', 'filter' => true],
+            (object)['id' => 46, 'name' => 'Iron',                      'icon' => 'iron', 'filter' => true],
+            (object)['id' => 47, 'name' => 'Laptop Friendly Workspace', 'icon' => 'laptop', 'filter' => true],
+            (object)['id' => 42, 'name' => 'Lock on Bedroom Door',      'icon' => 'lock', 'filter' => true],
+            (object)['id' => 12, 'name' => 'Pets Allowed',              'icon' => 'paw', 'filter' => false],
+            (object)['id' => 38, 'name' => 'Safety Card',               'icon' => 'home-safety', 'filter' => false],
+            (object)['id' => 41, 'name' => 'Shampoo',                   'icon' => 'shampoo', 'filter' => true],
+            (object)['id' => 35, 'name' => 'Smoke Detector',            'icon' => null, 'filter' => false],
+            (object)['id' => 11, 'name' => 'Smoking Allowed',           'icon' => 'smoking', 'filter' => false],
+            (object)['id' => 32, 'name' => 'Suitable for Events',       'icon' => 'events', 'filter' => false],
+            (object)['id' => 1,  'name' => 'TV',                        'icon' => 'tv', 'filter' => false],
+            (object)['id' => 33, 'name' => 'Washer',                    'icon' => 'washer', 'filter' => true],
+            (object)['id' => 6,  'name' => 'Wheelchair Accessible',     'icon' => 'accessible', 'filter' => false],
+            (object)['id' => 51, 'name' => 'Self Check-In',             'icon' => null, 'filter' => false]
+        ]);
+    }
+    
+    public function house_types()
+    {
+        return response()->json([
+            (object)['id' => 2,  'name' => 'House'],
+            (object)['id' => 1,  'name' => 'Apartment'],
+            (object)['id' => 3,  'name' => 'Bed &amp; Breakfast'],
+            (object)['id' => 43, 'name' => 'Boutique hotel'],
+            (object)['id' => 44, 'name' => 'Nature lodge'],
+            (object)['id' => 45, 'name' => 'Hostel'],
+            (object)['id' => 46, 'name' => 'Timeshare'],
+            (object)['id' => 47, 'name' => 'Serviced apartment'],
+            (object)['id' => 48, 'name' => 'Minsu (Taiwan)'],
+            (object)['id' => 49, 'name' => 'Ryokan (Japan)'],
+            (object)['id' => 50, 'name' => 'Pension (Korea)'],
+            (object)['id' => 51, 'name' => 'Heritage hotel (India)'],
+            (object)['id' => 8,  'name' => 'Boat'],
+            (object)['id' => 38, 'name' => 'Bungalow'],
+            (object)['id' => 4,  'name' => 'Cabin'],
+            (object)['id' => 5,  'name' => 'Castle'],
+            (object)['id' => 18, 'name' => 'Cave'],
+            (object)['id' => 22, 'name' => 'Chalet'],
+            (object)['id' => 37, 'name' => 'Condominium'],
+            (object)['id' => 9,  'name' => 'Dorm'],
+            (object)['id' => 23, 'name' => 'Earth House'],
+            (object)['id' => 40, 'name' => 'Guesthouse'],
+            (object)['id' => 24, 'name' => 'Hut'],
+            (object)['id' => 12, 'name' => 'Igloo'],
+            (object)['id' => 19, 'name' => 'Island'],
+            (object)['id' => 10, 'name' => 'Lighthouse'],
+            (object)['id' => 35, 'name' => 'Loft'],
+            (object)['id' => 28, 'name' => 'Plane'],
+            (object)['id' => 32, 'name' => 'Camper/RV'],
+            (object)['id' => 34, 'name' => 'Tent'],
+            (object)['id' => 16, 'name' => 'Tipi'],
+            (object)['id' => 36, 'name' => 'Townhouse'],
+            (object)['id' => 25, 'name' => 'Train'],
+            (object)['id' => 6,  'name' => 'Treehouse'],
+            (object)['id' => 11, 'name' => 'Villa'],
+            (object)['id' => 15, 'name' => 'Yurt'],
+            (object)['id' => 33, 'name' => 'Other']
+        ]);
+    }
+
+    public function languages()
+    {
+        return response()->json([
+            (object)['id' => 1,  'name' => 'English'],
+            (object)['id' => 16, 'name' => 'Italiano'],
+            (object)['id' => 32, 'name' => 'Русский'],
+            (object)['id' => 2,  'name' => 'Bahasa Indonesia'],
+            (object)['id' => 3,  'name' => 'Bahasa Malaysia'],
+            (object)['id' => 4,  'name' => 'Bengali'],
+            (object)['id' => 5,  'name' => 'Dansk'],
+            (object)['id' => 6,  'name' => 'Deutsch'],
+            (object)['id' => 7,  'name' => 'Hindi'],
+            (object)['id' => 8,  'name' => 'Magyar'],
+            (object)['id' => 9,  'name' => 'Nederlands'],
+            (object)['id' => 10, 'name' => 'Norsk'],
+            (object)['id' => 11, 'name' => 'Polski'],
+            (object)['id' => 12, 'name' => 'Português'],
+            (object)['id' => 13, 'name' => 'Punjabi'],
+            (object)['id' => 14, 'name' => 'Sign Language'],
+            (object)['id' => 15, 'name' => 'Suomi'],
+            (object)['id' => 17, 'name' => 'Svenska'],
+            (object)['id' => 18, 'name' => 'Čeština'],
+            (object)['id' => 19, 'name' => 'עברית']
+        ]);
+    }
 }
