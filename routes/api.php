@@ -25,6 +25,7 @@ Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $route
     $router->get('/ads/house_types', '\App\Api\Controllers\AdsController@house_types');
     $router->get('/languages', '\App\Api\Controllers\AdsController@languages');
     $router->get('/ads/{id}', '\App\Api\Controllers\AdsController@details');
+    $router->get('/ads/{id}/reviews', '\App\Api\Controllers\AdsController@reviews');
 
     $router->get('/help/search', '\App\Api\Controllers\HelpController@search');
     $router->get('/help/categories', '\App\Api\Controllers\HelpController@categories');
