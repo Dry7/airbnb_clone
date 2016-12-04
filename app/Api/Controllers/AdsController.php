@@ -61,7 +61,7 @@ class AdsController extends Controller
         ],
         [
             'id' => '40841869',
-            'name' => '',
+            'name' => 'Ирина',
             'url' => '/users/show/40841869',
             'image' => 'https://a2.muscache.com/im/users/40841869/profile_pic/1439145457/original.jpg?aki_policy=profile_medium',
             'is_superhost' => true,

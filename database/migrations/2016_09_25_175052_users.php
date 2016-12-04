@@ -27,6 +27,7 @@ class Users extends Migration
             $table->text('about')->nullable();
 
             $table->string('university')->nullable();
+            $table->string('work')->nullable();
             $table->string('employer')->nullable();
             $table->string('time_zone')->default('Moscow');
             $table->text('languages')->nullable();

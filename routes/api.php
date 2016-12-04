@@ -35,6 +35,9 @@ Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function (Router $route
     $router->get('/help/getting-started/{slug}', '\App\Api\Controllers\HelpController@gettingStarted');
     $router->get('/help/{id}', '\App\Api\Controllers\HelpController@show');
 
+    $router->get('/users/{id}', '\App\Api\Controllers\UserController@details');
+    $router->get('/users/{id}/reviews/{section}', '\App\Api\Controllers\UserController@reviews');
+
     $router->get('/map/places', function(Request $request) {
         $response = file_get_contents(
             'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' . urlencode($request->input('query', '')) .
